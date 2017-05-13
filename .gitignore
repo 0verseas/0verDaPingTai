@@ -1,0 +1,11 @@
+env.js
+public/src/env.js
+dist/
+node_modules/
+
+.editorconfig
+.idea/
+.vscode/
+*.log
+*.DS_Store
+*.keystore

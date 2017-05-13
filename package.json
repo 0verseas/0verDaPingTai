@@ -1,0 +1,24 @@
+{
+  "name": "0ver-da-ping-tai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node_modules/harp/bin/harp compile src dist",
+    "serve": "node_modules/harp/bin/harp server src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0verseas/0verDaPingTai.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0verseas/0verDaPingTai/issues"
+  },
+  "homepage": "https://github.com/0verseas/0verDaPingTai",
+  "dependencies": {
+    "harp": "^0.23.0"
+  }
+}
