@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>海外聯招會委員學校平台</title>
+	<link rel="stylesheet" href="css/<%- current.source %>.css">
+</head>
+<body>
+	<% if(current.source == 'login') { %>
+		<%- partial("components/_header") %>
+	<% } %>
+	<%- yield %>
+	<% if(current.source == 'login') { %>
+		<%- partial("components/_footer") %>
+	<% } %>
+	<script src="js/<%- current.source %>.js"></script>
+</body>
+</html>
