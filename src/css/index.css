@@ -1,0 +1,24 @@
+body {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+}
+
+.header {
+	padding-bottom: .05rem;
+	border-bottom: .05rem solid #e5e5e5;
+}
+
+@media screen and (min-width: 48em) {
+	.header {
+		margin-bottom: 2rem;
+	}
+	.container {
+		max-width: 46rem;
+	}
+}
+
+@media screen and (max-width: 48em) {
+	.col-md-4 {
+		margin-top: 20px;
+	}
+}
