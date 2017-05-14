@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/harp/bin/harp compile src dist",
-    "serve": "node_modules/harp/bin/harp server src"
+    "build": "harp compile src dist",
+    "serve": "harp server src"
   },
   "repository": {
     "type": "git",
