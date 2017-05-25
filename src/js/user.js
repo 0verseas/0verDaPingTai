@@ -31,7 +31,7 @@ var User = (function () {
 	
 	// permission: 'school_editor' | 'school_reviewer'
 	function checkLogin(permission) {
-		isLogin().then(function (res) {
+		return isLogin().then(function (res) {
 			if(res.ok) {
 				return res.json();
 			} else {
