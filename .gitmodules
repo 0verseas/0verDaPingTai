@@ -1,3 +1,4 @@
 [submodule "school"]
 	path = src/school
-	url = https://github.com/0verseas/0verSchool
+    url = https://github.com/0verseas/0verSchool
+    branch = master
