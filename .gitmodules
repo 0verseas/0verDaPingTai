@@ -2,3 +2,6 @@
 	path = src/school
     url = https://github.com/0verseas/0verSchool
     branch = dev
+[submodule "student"]
+	path = src/student
+	url = https://github.com/0verseas/0verStudent
