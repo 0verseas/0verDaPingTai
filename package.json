@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "harp compile src dist",
+    "build": "harp compile src dist && babel dist/js -d dist/js && babel dist/*/js -d dist/*/js",
     "serve": "harp server src"
   },
   "repository": {
@@ -20,5 +25,9 @@
   "homepage": "https://github.com/0verseas/0verDaPingTai",
   "dependencies": {
     "harp": "^0.23.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
   }
 }
