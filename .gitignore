@@ -3,7 +3,6 @@ public/src/env.js
 dist/
 node_modules/
 
-.editorconfig
 .idea/
 .vscode/
 *.log
