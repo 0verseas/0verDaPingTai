@@ -6,7 +6,7 @@ var User = (function () {
 	}
 
 	function login(loginForm) {
-		return fetch('https://api.overseas.ncnu.edu.tw/users/login', {
+		return fetch('https://api.overseas.ncnu.edu.tw/editors/login', {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json'
@@ -17,18 +17,18 @@ var User = (function () {
 	}
 
 	function logout() {
-		return fetch('https://api.overseas.ncnu.edu.tw/users/logout', {
+		return fetch('https://api.overseas.ncnu.edu.tw/editors/logout', {
 			method: "POST",
 			credentials: 'include'
 		});
 	}
 
 	function isLogin() {
-		return fetch('https://api.overseas.ncnu.edu.tw/users/login', {
+		return fetch('https://api.overseas.ncnu.edu.tw/editors/login', {
 			credentials: 'include'
 		});
 	}
-	
+
 	// permission: 'school_editor' | 'school_reviewer'
 	function checkLogin(permission) {
 		return isLogin().then(function (res) {
@@ -55,10 +55,10 @@ var User = (function () {
 	}
 
 	return {
-		login, 
-		logout, 
-		isLogin, 
-		checkLogin, 
+		login,
+		logout,
+		isLogin,
+		checkLogin,
 		getUserInfo
 	}
 })();
