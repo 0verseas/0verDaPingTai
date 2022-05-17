@@ -1,4 +1,5 @@
 env.js
+_harp.json
 public/src/env.js
 dist/
 node_modules/
