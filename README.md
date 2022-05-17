@@ -8,8 +8,10 @@ git submodule init
 git submodule update
 npm install
 cp src/env.js.example src/env.js
+cp src/_harp.json.example src/_harp.json
 ```
 edit the config file in ``src/env.js``
+edit the config file in ``src/_harp.json``
 
 ## run
 ```
