@@ -1,6 +1,12 @@
-version: '3'
+version: '3.7'
+
+networks:
+  bridge:
+    external:
+      name: ${NETWORKS}
+
 services:
-  nginx:
+  school:
     image: nginx:alpine
     container_name: 0verDaPingTai
     restart: unless-stopped
@@ -9,3 +15,10 @@ services:
       - TZ=Asia/Taipei
     volumes:
       - ./app/dist/:/usr/share/nginx/html/
+    networks:
+      - bridge
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.school.entrypoints=websecure"
+      - "traefik.http.routers.school.tls.certresolver=lets-encr"
+      - "traefik.http.routers.school.rule=Host(``)"
