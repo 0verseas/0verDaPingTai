@@ -1,6 +1,7 @@
 # 0verDaPingTai
 
-## usage
+## Deploy Local Develop Environment
+### usage
 ```
 git clone https://github.com/0verseas/0verDaPingTai.git
 cd 0verDaPingTai
@@ -13,24 +14,46 @@ cp src/_harp.json.example src/_harp.json
 edit the config file in ``src/env.js``
 edit the config file in ``src/_harp.json``
 
-## run
+### run
 ```
 npm run serve
 ```
 
-## compile
+### compile
 ```
 npm run build
 ```
 
-## update submodule
+### update submodule
 ```
 git submodule update --recursive --remote
 ```
 
-## Docker 🐳
-1. Install [Docker](https://docs.docker.com/engine/install/) & [Docker Compose](https://docs.docker.com/compose/install/)
-2. Edit docker compose file: `docker/docker-compose.yaml`
-2. `cp docker/.env.example docker/.env` and edit it (if you need).
-3. If static file doesn't yet be built, you should build it before running docker.
-3. `cd docker && docker-compose up -d`
+## Deploy Docker Develop Environment
+Just need to modify related documents(env.js, _harp.json, .env, docker-compose.yaml)
+
+First of all, git clone https://github.com/0verseas/0verDaPingTai.git than switch folder to 0verDaPingTai/, and do below
+  - ``cd 0verDaPingTai/``
+    - switch git branch
+      - ``sudo git checkout dev``
+    - add Submodule /school path
+      - ``sudo git submodule init``
+      - ``sudo git submodule update --recursive --remote``
+    - ``sudo cp src/env.js.example src/env.js``
+    - edit src/env.js (modify baseUrl, reCAPTCHA_site_key, stage)
+    - ``sudo cp src/_harp.json.example src/_harp.json``
+    - edit src/_harp.json (modify year)
+    - docker build
+      - ``sudo docker run -it --rm -v $PWD:/0verDaPingTai -w /0verDaPingTai node:14.16.0 sh -c 'npm install && npm run build'``
+
+Secondly, switch folder to 0verDaPingTai/docker/ and do below
+- ``cd docker/``
+  - ``sudo cp .env.example .env``
+  - edit .env (modify NETWORKS)
+  - edit docker-compose.yaml (modify the container's label which "traefik.http.routers.school.rule=Host(`` `input school's domain name here` ``)")
+
+Finally, did all the above mentioned it after that the last move is docker-compose up
+- ``sudo docker-compose up -d``
+
+If want to stop docker-compose
+- ``sudo docker-compose down``
