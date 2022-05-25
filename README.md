@@ -36,9 +36,13 @@ First of all, git clone https://github.com/0verseas/0verDaPingTai.git than switc
   - ``cd 0verDaPingTai/``
     - switch git branch
       - ``sudo git checkout dev``
-    - add Submodule /school path
+    - add Submodule src/school path
       - ``sudo git submodule init``
       - ``sudo git submodule update --recursive --remote``
+      - switch folder to src/school/ and do below
+        - ``cd src/school/``
+        - edit _layout.ejs (modify "openLoading(); to "//openLoading()")
+        - ``cd -``
     - ``sudo cp src/env.js.example src/env.js``
     - edit src/env.js (modify baseUrl, reCAPTCHA_site_key, stage)
     - ``sudo cp src/_harp.json.example src/_harp.json``
