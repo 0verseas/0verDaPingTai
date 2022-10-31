@@ -14,6 +14,7 @@ services:
     environment:
       - TZ=Asia/Taipei
     volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./app/dist/:/usr/share/nginx/html/
     networks:
       - bridge
@@ -22,3 +23,5 @@ services:
       - "traefik.http.routers.school.entrypoints=websecure"
       - "traefik.http.routers.school.tls.certresolver=lets-encr"
       - "traefik.http.routers.school.rule=Host(``)"
+      - "traefik.http.routers.school.tls.options=default"
+      - "traefik.http.routers.school.middlewares=secure-headers@file,traefik-compress@file"
