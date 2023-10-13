@@ -2,13 +2,13 @@ version: '3.7'
 
 networks:
   bridge:
-    external:
-      name: ${NETWORKS}
+    external: true
+    name: ${NETWORKS}
 
 services:
-  school:
+  dapingtai:
     image: nginx:alpine
-    container_name: 0verDaPingTai
+    container_name: ${CONTAINER_NAME}
     restart: unless-stopped
     tty: true
     environment:
@@ -20,8 +20,9 @@ services:
       - bridge
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.school.entrypoints=websecure"
-      - "traefik.http.routers.school.tls.certresolver=lets-encr"
-      - "traefik.http.routers.school.rule=Host(`${DOMAIN_NAME}`)"
-      - "traefik.http.routers.school.tls.options=default"
-      - "traefik.http.routers.school.middlewares=secure-headers@file,traefik-compress@file"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=${ENTRYPOINTS}"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls.certresolver=lets-encr"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${DOMAIN_NAME}`)"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls.options=default"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=secure-headers@file,traefik-compress@file"
+        #      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=ipwhitelist@file" # 禁止對外連接
