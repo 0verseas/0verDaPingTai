@@ -16,6 +16,8 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./app/dist/:/usr/share/nginx/html/
+      - ./realip.conf:/etc/nginx/nginx.conf
+      - ./filemtime:/var/www/html/filemtime
     networks:
       - bridge
     labels:
@@ -25,4 +27,4 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${DOMAIN_NAME}`)"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls.options=default"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=secure-headers@file,traefik-compress@file"
-        #      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=ipwhitelist@file" # 禁止對外連接
+        #      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=ncnuipwhitelist@file" # 禁止對外連接
