@@ -9,19 +9,68 @@ server {
 
     location / {
         #return 403;
-        #allow 10.9.0.0/16;
+        #allow x.x.x.x/16;
         #deny all;
         root   /usr/share/nginx/html;
         index  index.html index.htm;
     }
 
     location ^~ /school {
-        allow 10.9.0.0/16;
+        allow x.x.x.x/16;
         deny all;
 
         index login.html;
 
         alias /usr/share/nginx/html/school/;
+    }
+
+    # if dev no need below location
+    location ^~ /my-education-fair-2024 {
+        #allow x.x.x.x/16;
+        #deny all;
+        index my_education_fair_2024.html;
+
+        alias /var/www/html/filemtime/;
+    }
+
+    location ^~ /my-education-fair-venue-2024 {
+        #allow x.x.x.x/16;
+        #deny all;
+        index my_education_fair_venue_2024.html;
+
+        alias /var/www/html/filemtime/;
+    }
+
+    location ^~ /mo-education-fair-2024 {
+        #allow x.x.x.x/16;
+        #deny all;
+        index mo_education_fair_2024.html;
+
+        alias /var/www/html/filemtime/;
+    }
+
+    location ^~ /hk-education-fair-2024 {
+        #allow x.x.x.x/16;
+        #deny all;
+        index hk_education_fair_2024.html;
+
+        alias /var/www/html/filemtime/;
+    }
+
+    location ^~ /id-education-fair-2024 {
+        #allow x.x.x.x/16;
+        #deny all;
+        index id_education_fair_2024.html;
+
+        alias /var/www/html/filemtime/;
+    }
+
+    location ^~ /expo-2025 {
+        allow x.x.x.x/16;
+        deny all;
+        index expo_2025.html;
+
+        alias /var/www/html/filemtime/;
     }
 
     #error_page  404              /404.html;
