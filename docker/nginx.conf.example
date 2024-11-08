@@ -16,8 +16,8 @@ server {
     }
 
     location ^~ /school {
-        allow x.x.x.x/16;
-        deny all;
+        #allow x.x.x.x/16;
+        #deny all;
 
         index login.html;
 
@@ -66,8 +66,8 @@ server {
     }
 
     location ^~ /expo-2025 {
-        allow x.x.x.x/16;
-        deny all;
+        #allow x.x.x.x/16;
+        #deny all;
         index expo_2025.html;
 
         alias /var/www/html/filemtime/;

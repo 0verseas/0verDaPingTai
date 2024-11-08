@@ -30,39 +30,72 @@ git submodule update --recursive --remote
 ```
 
 ## Deploy Docker Develop Environment
-Just need to modify related documents(env.js, _harp.json, .env, docker-compose.yaml)
+### Startup Preparation
+if dev then
+```
+git clone https://github.com/0verseas/0verDaPingTai.git ./0verDaPingTai-dev/
+cd ./0verDaPingTai-dev/
+```
+if official then
+```
+git clone https://github.com/0verseas/0verDaPingTai.git ./0verDaPingTai-dev/
+cd ./0verDaPingTai-dev/
+git checkout dev
+```
 
-First of all, git clone https://github.com/0verseas/0verDaPingTai.git than switch folder to 0verDaPingTai/, if dev then git clone https://github.com/0verseas/0verDaPingTai.git ./0verDaPingTai-dev than switch folder to 0verDaPingTai-dev/, and do below
-  - ``cd ./0verDaPingTai/`` or ``cd ./0verDaPingTai-dev/``
-    - switch git branch(if dev then do this step)
-      - ``sudo git checkout dev``
-    - add Submodule src/school path
-      - ``sudo git submodule init``
-      - ``sudo git submodule update --recursive --remote``
-    - ``sudo cp ./src/env.js.example ./src/env.js``
-    - edit ./src/env.js (modify baseUrl, reCAPTCHA_site_key, stage)
-    - ``sudo cp ./src/_harp.json.example ./src/_harp.json``
-    - edit src/_harp.json (modify year)
-    - docker build
-      - ``sudo npm run docker-build``
-      - if npm command not found then ``npm install``
-    - ``sudo cp ./nginx.conf.example ./nginx.conf``
-    - edit ./nginx.conf (modify allow 'ips range' based on our environment)
-      - if dev then no need location of expo and any fair
-    - ``sudo cp ./realip.conf.example ./realip.conf``
-    - edit ./realip.conf (modify set_real_ip_from 'ips range' based on our docker environment)
-
-Secondly, switch folder to 0verDaPingTai/docker/ or 0verDaPingTai-dev/docker/ and do below
-- ``cd docker/``
-  - ``sudo cp .env.example .env``
-  - edit .env (modify NETWORKS, DOMAIN_NAME, ENTRYPOINTS)
-  - if you want to exclude IPs other than ours then edit docker-compose.yaml open ncnuipwhitlist@file label setting
-
-Finally, did all the above mentioned it after that the last move is docker-compose up
-- ``sudo docker-compose up -d``
-
-If want to stop docker-compose
-- ``sudo docker-compose down``
-
-if don‘t want to stop container and apply docker-compose edited setting then
-- ``sudo docker-compose up --detach``
+```
+git submodule init
+git submodule update
+npm install
+cp ./src/env.js.example ./src/env.js
+cp ./src/_harp.json.example ./src/_harp.json
+cp ./docker/.env.example ./docker/.env
+cp ./docker/nginx.conf.example ./docker/nginx.conf
+cp ./docker/realip.conf.example ./docker/realip.conf
+```
+#### Edit Config Files
+modify baseUrl, reCAPTCHA_site_key, stage
+```
+vim ./src/env.js
+```
+modify year
+```
+vim ./src/_harp.json
+```
+modfiy NETWORKS, DOMAIN_NAME, ENTRYPOINTS
+```
+vim ./docker/.env
+```
+#### *If need container one of the pages exclude IPs other than ours*
+modify set_real_ip_from 'IPs range' based on our docker environment and uncomment rows of 32-34
+```
+vim ./docker/realip.conf
+```
+modify allow 'IPs range' based on our environment and uncomment allow 'IPs range' and deny all, if dev then no need and delete/comment rows of 27-74
+```
+vim ./docker/nginx.conf
+```
+#### *If want Container Block Exclude IPs Other than Ours*
+modify uncomment row 30
+```
+vim ./docker/docker-compose.yaml
+```
+### Build
+```
+sudo npm run docker-build
+```
+### StartUp
+at ./docker/ path
+```
+sudo docker-compose up -d
+```
+### Stop
+at ./docker/ path
+```
+sudo docker-compose down
+```
+### ✨Nonstop Container and Apply New Edit Docker-Compose Setting (Use Only Container is running)✨
+The command will not effect on the running container if you have not edited any of the settings on docker-compose.yaml
+```
+sudo docker-compose up --detach
+```
