@@ -35,12 +35,12 @@ if dev then
 ```
 git clone https://github.com/0verseas/0verDaPingTai.git ./0verDaPingTai-dev/
 cd ./0verDaPingTai-dev/
+git checkout dev
 ```
 if official then
 ```
-git clone https://github.com/0verseas/0verDaPingTai.git ./0verDaPingTai-dev/
-cd ./0verDaPingTai-dev/
-git checkout dev
+git clone https://github.com/0verseas/0verDaPingTai.git
+cd ./0verDaPingTai/
 ```
 
 ```
@@ -63,6 +63,7 @@ modify year
 vim ./src/_harp.json
 ```
 modfiy NETWORKS, DOMAIN_NAME, ENTRYPOINTS
+*If dev then add modify COMPOSE_PROJECT_NAME and CONTAINER_NAME*
 ```
 vim ./docker/.env
 ```
@@ -71,7 +72,9 @@ modify set_real_ip_from 'IPs range' based on our docker environment and uncommen
 ```
 vim ./docker/realip.conf
 ```
-modify allow 'IPs range' based on our environment and uncomment allow 'IPs range' and deny all, if dev then no need and delete/comment rows of 27-74
+modify allow 'IPs range' based on our environment and uncomment allow 'IPs range' and deny all
+*If dev then no need and delete/comment rows of 27-74*
+*if need URL Directory turn to show the error page then add uncomment row 11 'return 403'*
 ```
 vim ./docker/nginx.conf
 ```
@@ -85,17 +88,18 @@ vim ./docker/docker-compose.yaml
 sudo npm run docker-build
 ```
 ### StartUp
-at ./docker/ path
+*at ./docker/ path*
 ```
 sudo docker-compose up -d
 ```
 ### Stop
-at ./docker/ path
+*at ./docker/ path*
 ```
 sudo docker-compose down
 ```
 ### ✨Nonstop Container and Apply New Edit Docker-Compose Setting (Use Only Container is running)✨
 The command will not effect on the running container if you have not edited any of the settings on docker-compose.yaml
+*at ./docker/ path*
 ```
 sudo docker-compose up --detach
 ```
