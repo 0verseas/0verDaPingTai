@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "harp src dist && babel dist/js -d dist/js && babel dist/*/js -d dist/*/js",
-    "docker-build": "docker run -it --rm -v $PWD:/0verDaPingTai -w /0verDaPingTai node:14.16.0 sh -c 'npm install && npm run build' ",
+    "docker-build": "docker run -it --rm -v $PWD:/0verDaPingTai -w /0verDaPingTai node:22.20.0 sh -c 'npm install chalk && npm install && npm run build' ",
     "serve": "harp src"
   },
   "repository": {
@@ -25,11 +25,16 @@
   },
   "homepage": "https://github.com/0verseas/0verDaPingTai",
   "dependencies": {
-    "harp": "^0.41.2"
+    "harp": "^0.47.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.8",
-    "@babel/preset-env": "^7.16.11"
+    "@babel/cli": "^7.28.6",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.3"
+  },
+  "overrides": {
+    "ejs": "^3.1.10",
+    "send": "^0.19.0",
+    "esbuild": "^0.25.0"
   }
 }
